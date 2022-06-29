@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 rootProject.name = "binding-adapter"
@@ -17,3 +18,4 @@ include ':app'
 include ':bindingadapter'
 include ':bindingadapter-imageview'
 include ':bindingadapter-textview'
+include ':bindingadapter-banner'
