@@ -14,4 +14,17 @@ object TextViewAdapter {
         }
     }
 
+    @JvmStatic
+    @BindingAdapter(value = ["primaryName", "secondaryName", "separator"], requireAll = false)
+    fun setHtmlText(textView: TextView, primaryName: String?, secondaryName: String?, separator: String?) {
+        textView.text = when {
+            !primaryName.isNullOrEmpty() && !secondaryName.isNullOrEmpty() ->
+                "${primaryName.htmlToSpanned()}${separator ?: '/'}${secondaryName.htmlToSpanned()}"
+            !primaryName.isNullOrEmpty() && secondaryName.isNullOrEmpty() ->
+                primaryName.htmlToSpanned()
+            primaryName.isNullOrEmpty() && !secondaryName.isNullOrEmpty() ->
+                secondaryName.htmlToSpanned()
+            else -> ""
+        }
+    }
 }
